@@ -66,5 +66,40 @@ angular.module('myApp', ['ngRoute'])
 电气时代:controller/service/model  
 互联网时代:common + business-->controller/service/model  
 
+
+### 模块动态加载
+这里摘自oclazyload中的2种方式  
+
+```javascript
+
+// 结合module使用
+angular.module('MyModule', ['pascalprecht.translate', {
+    files: [
+        '/components/TestModule/TestModule.js',
+        '/components/bootstrap/css/bootstrap.css',
+        '/components/bootstrap/js/bootstrap.js'
+    ],
+    cache: false
+}]);
+
+// 结合路由使用
+$stateProvider.state('parent', {
+  url: "/",
+  resolve: {
+    loadMyService: ['$ocLazyLoad', function($ocLazyLoad) {
+             return $ocLazyLoad.load('js/ServiceTest.js');
+    }]
+  }
+})
+.state('parent.child', {
+    resolve: {
+        test: ['loadMyService', '$ServiceTest', function(loadMyService, $ServiceTest) {
+            // you can use your service
+            $ServiceTest.doSomething();
+        }]
+    }
+});
+```
+
 ### 番外篇
 ASP.NET 的母版页Master Pages相比？ [链接](http://www.oschina.net/translate/developing-a-large-scale-application-with-a-single)
