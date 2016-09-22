@@ -72,7 +72,7 @@ angular.module('myApp', ['ngRoute'])
 
 ```javascript
 
-// 结合module使用
+// 结合module使用,不过这种方式只适用于可以懒加载的模块
 angular.module('MyModule', ['pascalprecht.translate', {
     files: [
         '/components/TestModule/TestModule.js',

@@ -1,9 +1,12 @@
 // Ionic Starter App
 
+var aaa = ['dash'];
+// var aaa=['account', 'chat', 'dash'];
+
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('starter', ['ionic', 'account', 'chat', 'dash'],  function ($httpProvider) {
+angular.module('starter', ['ionic', "oc.lazyLoad"].concat(aaa), function ($httpProvider) {
   // AngularJS默认为JSON，这里全局修改为:x-www-form-urlencoded
   $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
   var param = function (obj) {
@@ -39,7 +42,7 @@ angular.module('starter', ['ionic', 'account', 'chat', 'dash'],  function ($http
   }];
 })
 
-  .run(function ($ionicPlatform) {
+  .run(function ($ionicPlatform, $ocLazyLoad) {
     $ionicPlatform.ready(function () {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
       // for form inputs)
@@ -52,6 +55,9 @@ angular.module('starter', ['ionic', 'account', 'chat', 'dash'],  function ($http
         // org.apache.cordova.statusbar required
         StatusBar.styleDefault();
       }
+
+      // 懒加载[ 'account', 'chat', 'dash']
+      //  $ocLazyLoad.load(['./account/js/account.js','./chat/js/chat.js','./dash/js/dash.js']);
     });
   })
 
@@ -66,6 +72,7 @@ angular.module('starter', ['ionic', 'account', 'chat', 'dash'],  function ($http
       // setup an abstract state for the tabs directive
       .state('tab', {
         url: '/tab',
+        controller: 'tabCtrl',
         abstract: true,
         templateUrl: 'app/tpl/tabs.html'
       })
@@ -89,8 +96,15 @@ angular.module('starter', ['ionic', 'account', 'chat', 'dash'],  function ($http
             templateUrl: 'chat/tpl/tab-chats.html',
             controller: 'ChatsCtrl'
           }
+        },
+        resolve: { // Any property in resolve should return a promise and is executed before the view is loaded
+          loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+            // you can lazy load files for an existing module
+            return $ocLazyLoad.load(['chat/js/chat.js','chat/js/services.js']);
+          }]
         }
       })
+
       .state('tab.chat-detail', {
         url: '/chats/:chatId',
         views: {
@@ -109,10 +123,19 @@ angular.module('starter', ['ionic', 'account', 'chat', 'dash'],  function ($http
             templateUrl: 'chat/tpl/tab-account.html',
             controller: 'AccountCtrl'
           }
+        },
+        resolve: { // Any property in resolve should return a promise and is executed before the view is loaded
+          loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+            // you can lazy load files for an existing module
+            return $ocLazyLoad.load('account/js/account.js');
+          }]
         }
       });
-
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/tab/dash');
-
+  })
+  /* 
+  * 抽象模块
+  */
+  .controller('tabCtrl', function ($scope, $stateParams) {
   });
