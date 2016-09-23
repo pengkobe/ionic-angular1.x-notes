@@ -8,8 +8,8 @@
 
 ### 入口
 1. 用户信息/权限/功能管理
-2. 封装动态加载
-3. 封装app动态更新(现在根本没有用好这个功能)/大版本更新
+2. 封装动态加载(ocLazyLoad)
+3. 封装app动态更新([cordova-app-loader](https://github.com/markmarijnissen/cordova-app-loader))/大版本更新
 4. 全局服务注册(电话/设施告警)
 5. 公用类库(图表)
 6. 分文件夹管理大业务模块
