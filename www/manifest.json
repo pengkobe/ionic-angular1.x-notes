@@ -10,12 +10,20 @@
       "type": "image/png"
     }
   ],
-  "files": { 
+  "files": {
     "template": {
       "version": "3e70f2873de3d9c91e31271c1a59b32e8002ac23",
       "filename": "dash/tpl/tab-dash.html"
     },
+    "autoupdate": {
+      "version": "8c99369a825644e68e21433d78ed8b396351cc7d",
+      "filename": "autoupdate.js"
+    },
     "app": {
+      "version": "8c99369a825644e68e21433d78ed8b396351cc7d",
+      "filename": "app/js/app.js"
+    },
+    "dash": {
       "version": "8c99369a825644e68e21433d78ed8b396351cc7d",
       "filename": "dash/js/dash.js"
     },
@@ -24,8 +32,7 @@
       "filename": "dash/css/dash.css"
     }
   },
-  "load": [ 
-    "lib/cordova-app-loader-complete.js",
+  "load": [
     "autoupdate.js",
     "app/js/app.js",
     "dash/js/dash.js",
