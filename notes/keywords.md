@@ -1,4 +1,4 @@
-# notes
+# AngularJS笔记
 实践
 +网络资料(如:[AngularJS系列-翻译官网](http://www.cnblogs.com/leosx/p/4048105.html))
 +书(如:angularJS权威教程)

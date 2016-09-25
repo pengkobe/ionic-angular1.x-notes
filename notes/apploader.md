@@ -1,4 +1,4 @@
-# cordova-app-loader
+# cordova-app-loader使用笔记
 之所以要在这里做记录是因为看作者文档看得稀里糊涂，又找不到其它更好的Repo，只能硬啃了！
 
 ### 安装使用步骤
@@ -74,5 +74,7 @@ Failed to load resource: net::ERR_FILE_NOT_FOUND
 
 ### 问题
 和懒加载一起使用会发生问题哦！
+在谷歌浏览器中懒加载(oclazyload)本身会在head中添加js引用，该引用并不是使用临时目录，但是不排除在手机环境中可行，因为其
+可能会替换文件本身(这个暂时没有深究)
 
 
