@@ -61,3 +61,25 @@ gulp.task('mytask', function(done) {
       .pipe(concat('app.js'))
       .pipe(gulp.dest('www/build'));
 });
+
+/**
+ * buildchat
+ */
+gulp.task('buildchat', function(done) {
+  gulp.src(['www/chat/js/services.js','www/chat/js/chat.js'])
+     // .pipe(uglify())
+      .pipe(concat('chat.min.js'))
+      .pipe(gulp.dest('www/chat'));
+});
+
+
+/**
+ * buildaccount
+ */
+gulp.task('buildaccount', function(done) {
+  gulp.src(['www/account/js/account.js'])
+     // .pipe(uglify())
+      .pipe(concat('account.min.js'))
+      .pipe(gulp.dest('www/account'));
+});
+

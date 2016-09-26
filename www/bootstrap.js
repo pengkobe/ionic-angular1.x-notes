@@ -1,5 +1,5 @@
 (function () {
-  window.BOOTSTRAP_OK = true;
+  
   // Retrieved and slightly modified from: https://github.com/typicode/pegasus
   // --------------------------------------------------------------------------
   //

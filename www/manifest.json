@@ -19,9 +19,13 @@
       "version": "8c99369a825644e68e21433d78ed8b396351cc7d",
       "filename": "autoupdate.js"
     },
-    "app": {
+     "account": {
       "version": "8c99369a825644e68e21433d78ed8b396351cc7d",
-      "filename": "app/js/app.js"
+      "filename": "account/account.min.js"
+    },
+    "chat": {
+      "version": "8c99369a825644e68e21433d78ed8b396351cc7d",
+      "filename": "chat/chat.min.js"
     },
     "dash": {
       "version": "8c99369a825644e68e21433d78ed8b396351cc7d",
@@ -34,7 +38,6 @@
   },
   "load": [
     "autoupdate.js",
-    "app/js/app.js",
     "dash/js/dash.js",
     "dash/css/dash.css"
   ]

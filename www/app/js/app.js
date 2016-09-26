@@ -56,17 +56,25 @@ angular.module('starter', ['ionic', "oc.lazyLoad"].concat(aaa), function ($httpP
         StatusBar.styleDefault();
       }
 
-      // 懒加载[ 'account', 'chat', 'dash']
-      //  $ocLazyLoad.load(['./account/js/account.js','./chat/js/chat.js','./dash/js/dash.js']);
+      // 开启动态更新
+      window.BOOTSTRAP_OK = true;
     });
   })
 
   .config(function ($stateProvider, $urlRouterProvider) {
-
     // Ionic uses AngularUI Router which uses the concept of states
     // Learn more here: https://github.com/angular-ui/ui-router
     // Set up the various states which the app can be in.
     // Each state's controller can be found in controllers.js
+    // 计算地址
+    var manifest= localStorage.getItem("manifest");
+     var root = '';
+    if(manifest){
+      manifest = JSON.parse(manifest)
+      root = (manifest.root +'/') || '';
+    }
+    
+
     $stateProvider
 
       // setup an abstract state for the tabs directive
@@ -100,7 +108,7 @@ angular.module('starter', ['ionic', "oc.lazyLoad"].concat(aaa), function ($httpP
         resolve: { // Any property in resolve should return a promise and is executed before the view is loaded
           loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
             // you can lazy load files for an existing module
-            return $ocLazyLoad.load(['chat/js/chat.js','chat/js/services.js']);
+            return $ocLazyLoad.load([root+ 'chat/chat.min.js']);
           }]
         }
       })
@@ -127,7 +135,7 @@ angular.module('starter', ['ionic', "oc.lazyLoad"].concat(aaa), function ($httpP
         resolve: { // Any property in resolve should return a promise and is executed before the view is loaded
           loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
             // you can lazy load files for an existing module
-            return $ocLazyLoad.load('account/js/account.js');
+            return $ocLazyLoad.load(root+'account/account.min.js');
           }]
         }
       });

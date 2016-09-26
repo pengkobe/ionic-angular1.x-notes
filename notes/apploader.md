@@ -54,12 +54,13 @@
 
 6. 测试
 修改style下dash.css的版本号，虽然能够下载下来(downlaod)，但是没有进入到update方法，一步一步排查，
-最后排查到了*cordova-app-loader-complete.js*中498行，发现少了如下一个判断,直接报错中止了运行。
+最后排查到了*cordova-app-loader-complete.js*中498行，发现少了如下一个判断,直接报错中止了运行。[issue](https://github.com/markmarijnissen/cordova-app-loader/issues/74)
 
 ```javascript
 if(onSingleDownloadProgress){
 	onSingleDownloadProgress(new ProgressEvent());
 }
+
 ```
 
 好的可以成功下载并更新，但是临时存储空间提示某些文件不存在！
@@ -73,8 +74,10 @@ Failed to load resource: net::ERR_FILE_NOT_FOUND
 也算是告了一小段，接下来需要把其封装成服务了。
 
 ### 问题
-和懒加载一起使用会发生问题哦！
+1. 和懒加载一起使用会发生问题哦！
 在谷歌浏览器中懒加载(oclazyload)本身会在head中添加js引用，该引用并不是使用临时目录，但是不排除在手机环境中可行，因为其
 可能会替换文件本身(这个暂时没有深究)
+2. *window.BOOTSTRAP_OK = true;* 必须放在不不会更新的文件中，否则每次切换到主页都会自动加载
+3. 谷歌第一次更新会刷新两次[有文件更新需要重新获取]，此外文件全都替换为内存中过得临时文件(只改动一个文件处理也一样)
 
 
