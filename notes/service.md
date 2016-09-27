@@ -1,4 +1,4 @@
-# angular服务
+# Angular服务
 angular按照用途与生命周期划分成几种类型服务，下面一一道来。
 
 ### factory
@@ -117,9 +117,6 @@ angular.module('myApp')
 使用场景:
 1. 需要对service进行配置的使用。比如，上述列子中需要配置后台URL
 2. 发布公用组件时可以给用户配置的权利
-
-还可以看看这篇翻译：http://www.oschina.net/translate/top-10-mistakes-angularjs-developers-make
-
 
 ### 参考  
 [AngularJS 开发者最常犯的 10 个错误](http://www.oschina.net/translate/top-10-mistakes-angularjs-developers-make)  
