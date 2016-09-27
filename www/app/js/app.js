@@ -47,9 +47,12 @@ angular.module('starter', ['ionic', "oc.lazyLoad"].concat(aaa), function ($httpP
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
       // for form inputs)
       if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
-        cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-        cordova.plugins.Keyboard.disableScroll(true);
-
+        cordova.plugins.Keyboard.hideKeyboardAccessoryBar(false);
+        // fix ios Keyboard cannot scroll
+        window.cordova.plugins.Keyboard.shrinkView(true);
+        // fix ios toolbar
+        window.cordova.plugins.Keyboard.hideFormAccessoryBar(true);
+				cordova.plugins.Keyboard.disableScroll(true);
       }
       if (window.StatusBar) {
         // org.apache.cordova.statusbar required
