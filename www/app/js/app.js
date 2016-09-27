@@ -69,7 +69,7 @@ angular.module('starter', ['ionic', "oc.lazyLoad"].concat(aaa), function ($httpP
     // Learn more here: https://github.com/angular-ui/ui-router
     // Set up the various states which the app can be in.
     // Each state's controller can be found in controllers.js
-    // 计算地址
+    // 获取加载地址(缓存 or 本地)
     var manifest= localStorage.getItem("manifest");
      var root = '';
     if(manifest){

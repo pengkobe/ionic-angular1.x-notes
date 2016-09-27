@@ -1,8 +1,8 @@
 # 架构组织
 
 ### 工程组织
-1. 分文件夹管理子模块
-2. 深层次使用gulp，进一步自动化解决人工维护痛点
+1. 分文件夹管理子模块 (√)
+2. 深层次使用gulp，进一步自动化解决人工维护痛点 (√)
 3. 使用sass模块化开发css
 4. 使用[ocLazyLoad](https://github.com/ocombe/ocLazyLoad)动态加载文件，[文档](https://oclazyload.readme.io/docs)
 5. 统一管理包名[测试版、发布版]，在引用第三方服务的时候特别需要注意。
