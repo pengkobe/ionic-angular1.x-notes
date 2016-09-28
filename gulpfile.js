@@ -14,7 +14,7 @@ var paths = {
 
 gulp.task('default', ['sass']);
 
-gulp.task('sass', function(done) {
+gulp.task('sass', function (done) {
   gulp.src('./scss/ionic.app.scss')
     .pipe(sass())
     .on('error', sass.logError)
@@ -27,18 +27,18 @@ gulp.task('sass', function(done) {
     .on('end', done);
 });
 
-gulp.task('watch', function() {
+gulp.task('watch', function () {
   gulp.watch(paths.sass, ['sass']);
 });
 
-gulp.task('install', ['git-check'], function() {
+gulp.task('install', ['git-check'], function () {
   return bower.commands.install()
-    .on('log', function(data) {
+    .on('log', function (data) {
       gutil.log('bower', gutil.colors.cyan(data.id), data.message);
     });
 });
 
-gulp.task('git-check', function(done) {
+gulp.task('git-check', function (done) {
   if (!sh.which('git')) {
     console.log(
       '  ' + gutil.colors.red('Git is not installed.'),
@@ -55,31 +55,39 @@ gulp.task('git-check', function(done) {
  * 实验性使用gulp
  * 打包所有业务模块下js文件至一个js文件
  */
-gulp.task('mytask', function(done) {
-  gulp.src(['www/**/js/*.js','!www/lib/**/*.js'])
-      .pipe(uglify())
-      .pipe(concat('app.js'))
-      .pipe(gulp.dest('www/build'));
+gulp.task('mytask', function (done) {
+  gulp.src(['www/**/js/*.js', '!www/lib/**/*.js'])
+    .pipe(uglify())
+    .pipe(concat('app.js'))
+    .pipe(gulp.dest('www/build'));
 });
 
 /**
  * buildchat
  */
-gulp.task('buildchat', function(done) {
-  gulp.src(['www/chat/js/services.js','www/chat/js/chat.js'])
-     // .pipe(uglify())
-      .pipe(concat('chat.min.js'))
-      .pipe(gulp.dest('www/chat'));
+gulp.task('buildchat', function (done) {
+  gulp.src(['www/chat/js/services.js', 'www/chat/js/chat.js'])
+    // .pipe(uglify())
+    .pipe(concat('chat.min.js'))
+    .pipe(gulp.dest('www/chat'));
 });
 
 
 /**
  * buildaccount
  */
-gulp.task('buildaccount', function(done) {
+gulp.task('buildaccount', function (done) {
   gulp.src(['www/account/js/account.js'])
-     // .pipe(uglify())
-      .pipe(concat('account.min.js'))
-      .pipe(gulp.dest('www/account'));
+    // .pipe(uglify())
+    .pipe(concat('account.min.js'))
+    .pipe(gulp.dest('www/account'));
 });
 
+/**
+ * 全局打包css至common
+ */
+gulp.task('buildcss', function (done) {
+  gulp.src(['www/**/*.css', '!www/lib/**/*.css'])
+    .pipe(concat('style.min.css'))
+    .pipe(gulp.dest('www/common/css'));
+});

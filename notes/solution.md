@@ -21,6 +21,24 @@
 ### 业务类
 * 分模块开发,懒加载
 * 对于服务类需要异步请求数据的，可以使用promise进行改造
+* 对于耦合较大的业务，如单个组件间需要践行业务分离(ion-slide-box),可以采用写指令的方式，
+主Controller负责传递数据,此外指令也可以进行懒加载
+  ```
+  # 静态绑定
+  <div oc-lazy-load="['js/testModule.js', 'partials/lazyLoadTemplate.html']">
+    <!-- Use a directive from TestModule -->
+    <test-directive></test-directive>
+  </div>
+
+  # js动态绑定
+  JS
+  $scope.lazyLoadParams = [
+    'js/testModule.js',
+    'partials/lazyLoadTemplate.html'
+  ];
+  HTML
+  <div oc-lazy-load="lazyLoadParams"></div>
+  ```
 
 ### 代码组织
 * controller应该尽量不涉及dom操作(交由directive实现)，应该作为视图与模型的协调者  
