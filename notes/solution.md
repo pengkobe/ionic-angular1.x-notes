@@ -1,8 +1,12 @@
 # 架构组织
 
+### 兼容
+Crosswalk是个好东西，缺陷是打包后会很大(增20m左右)。
+
 ### 工程组织
 1. 分文件夹管理子模块 (√)
-2. 深层次使用gulp，进一步自动化解决人工维护痛点 (√)
+2. 深层次使用gulp，进一步自动化解决人工维护痛点，此外，还可以任务分文件，路径可配置化(桌面程序)  
+   ![wepay实践](img/we_gulp.png)
 3. 使用sass模块化开发css
 4. 使用[ocLazyLoad](https://github.com/ocombe/ocLazyLoad)动态加载文件，[文档](https://oclazyload.readme.io/docs)
 5. 统一管理包名[测试版、发布版]，在引用第三方服务的时候特别需要注意。
