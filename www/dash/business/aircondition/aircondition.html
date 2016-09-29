@@ -4,6 +4,10 @@
 </p>
 
 <div oc-lazy-load="['dash/business/aircondition/aircondition.js']">
-    <!-- Use a directive from TestModule -->
-    <hello-world/>
+  <!-- Use a directive from TestModule -->
+  <accordion>
+    <expander class="expander" ng-repeat="expander in expanders" expander-title="expander.title">
+      {{expander.text}}
+    </expander>
+  </accordion>
 </div>
