@@ -12,6 +12,7 @@ angular.module('dash', [])
           break;
         case 'aircondition':
           tplUrl = 'aircondition';
+          buildAircondition();
           break;
         default:
         // TODO：隐藏业务tab
@@ -19,18 +20,22 @@ angular.module('dash', [])
       return 'dash/business/' + tplUrl + '/' + tplUrl + '.html';
     };
 
-    $scope.expanders = [
-      {
-        title: 'Click me to expand',
-        text: 'Hi there folks, I am the content that was hidden but is now shown.'
-      },
-      {
-        title: 'Click this',
-        text: 'I am even better text than you have seen previously'
-      },
-      {
-        title: 'Test',
-        text: 'test'
-      }];
-
+    /**
+     * 构建Aircondition业务
+     */
+    function buildAircondition() {
+      $scope.expanders = [
+        {
+          title: 'Click me to expand',
+          text: 'Hi there folks, I am the content that was hidden but is now shown.'
+        },
+        {
+          title: 'Click this',
+          text: 'I am even better text than you have seen previously'
+        },
+        {
+          title: 'Test',
+          text: 'test'
+        }];
+    }
   })

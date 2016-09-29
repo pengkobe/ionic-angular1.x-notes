@@ -4,7 +4,7 @@
 Crosswalk是个好东西，缺陷是打包后会很大(增20m左右)。
 
 ### 工程组织
-1. 分文件夹管理子模块 (√)
+1. 分文件夹管理子模块
 2. 深层次使用gulp，进一步自动化解决人工维护痛点，此外，还可以任务分文件，路径可配置化(桌面程序)  
    ![wepay实践](img/we_gulp.png)
 3. 使用sass模块化开发css
@@ -26,7 +26,7 @@ Crosswalk是个好东西，缺陷是打包后会很大(增20m左右)。
 * 分模块开发,懒加载
 * 对于服务类需要异步请求数据的，可以使用promise进行改造
 * 对于耦合较大的业务，如单个组件间需要践行业务分离(ion-slide-box),可以采用写指令的方式，
-主Controller负责传递数据,此外指令也可以进行懒加载
+  tpl负责页面代码，主Controller负责传递数据,指令使用进行懒加载
   ```
   # 静态绑定
   <div oc-lazy-load="['js/testModule.js', 'partials/lazyLoadTemplate.html']">

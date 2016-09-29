@@ -103,3 +103,8 @@ autocomplete="off" placeholder="Location" />
     }
 });
 ```
+
+### 部分参考
+* [AngularJS权威教程](https://book.douban.com/subject/25945442/)
+* 翻译者有点烂，建议看原文： [[译] AngularJS内幕详解之 Directive](http://www.w3ctech.com/topic/1612)  
+* [《AngularJS》5个实例详解Directive（指令）机制](http://damoqiongqiu.iteye.com/blog/1917971)
