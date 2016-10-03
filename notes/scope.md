@@ -46,6 +46,16 @@ for(o in $($0).scope())o[0]=='$'&&console.log(o)
 
 
 ### $digest/$watcher/$phase/$apply
+**$digest**
+通过递归检测scope和它的后代们的变化。$$phase指digest循环的当前阶段,[null, '$apply', '$digest'] 中的一个。
+可以和watcher配合使用，```$scope.$digest();``` 手动触发。其要么直接被触发,要么是调用$apply()触发
+**$watch**
+1. $watch(watchExp, listener, objectEquality) 为scope添加一个watch监听器
+2. $watchCollection watch数组元素或对象属性
+3. $$watchers 保持所有的watch与scope的关联
+
+**$apply**
+实际上很少时候需要手动调用 ```$digest();``` $apply总是更好的选择。
 
 
 ###  参考
