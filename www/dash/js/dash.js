@@ -1,3 +1,7 @@
+/*
+ * controller负责数据对接与权限控制
+ */
+
 angular.module('dash', [])
   .controller('DashCtrl', function ($scope) {
     // 构建消息UI模板

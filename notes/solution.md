@@ -5,7 +5,46 @@ Crosswalk是个好东西，缺陷是打包后会很大(增20m左右)。
 
 ### 工程组织
 1. 分文件夹管理子模块
-2. 深层次使用gulp，进一步自动化解决人工维护痛点，此外，还可以任务分文件，路径可配置化(桌面程序)  
+   ```
+   ProjectName/
+    ├── hooks
+    ├── node_modules
+    ├── notes (笔记)
+    │   ├── img/
+    │   ├── apploader.md
+    │   ├── directive.md
+    │   ├── ...
+    ├── scss
+    │   ├── ionic.app.scss
+    │   └── img
+    ├── www
+    │   ├── account/
+    │   ├── app/
+    │   ├── chat/
+    │   ├── common/
+    │   ├── dash (业务单元)
+    │   │    ├── business/ (子业务单元)
+    │   │    ├── css/
+    │   │    ├── js/
+    │   │    ├── tpl/
+    │   ├── autoupdate.js
+    │   ├── bootstrap.js
+    │   ├── index.html
+    │   ├── service-worker.js
+    │   └── manifest.json
+    ├── config.xml
+    ├── ionic.project
+    ├── package.json
+    ├── gulpfile.js
+    ├── bower.json
+    ├── .bowerrc
+    ├── .editorconfig
+    ├── .gitignore
+    ├── README.md
+    └── LICENSE
+   ```
+
+2. 深层次使用gulp，进一步自动化解决人工维护痛点，此外，还可以任务分文件，路径可配置化(桌面程序)
    ![wepay实践](img/we_gulp.png)
 3. 使用sass模块化开发css
 4. 使用[ocLazyLoad](https://github.com/ocombe/ocLazyLoad)动态加载文件，[文档](https://oclazyload.readme.io/docs)
@@ -45,10 +84,10 @@ Crosswalk是个好东西，缺陷是打包后会很大(增20m左右)。
   ```
 
 ### 代码组织
-* controller应该尽量不涉及dom操作(交由directive实现)，应该作为视图与模型的协调者  
+* controller应该尽量不涉及dom操作(交由directive实现)，应该作为视图与模型的协调者
 
 
 ### 问题
 1. gulp-uglify可能导致程序不能运行
-   原因分析:uglify会进行变量压缩，压缩后angularJS就不知道依赖注入哪个服务了。   
+   原因分析:uglify会进行变量压缩，压缩后angularJS就不知道依赖注入哪个服务了。
    解决方案:把依赖作为一个字符串数组传递，而数组的最后一个元素是一个把所有依赖作为参数的函数。

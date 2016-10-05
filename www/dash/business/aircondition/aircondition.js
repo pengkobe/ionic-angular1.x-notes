@@ -35,7 +35,7 @@ dash.directive('expander', function() {
                    + '<div class="title" ng-click="toggle()">{{title}}</div>'
                    + '<div class="body" ng-show="showMe" ng-transclude></div>'
                    + '</div>',
-        link : function(scope, element, attrs, accordionController) {
+        link: function(scope, element, attrs, accordionController) {
             scope.showMe = false;
             accordionController.addExpander(scope);
             scope.toggle = function toggle() {
