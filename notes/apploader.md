@@ -5,7 +5,7 @@
 1. 下载autoupdate.js
    此文件主要用于在加载时自动检测更新文件
 2. 下载bootstrap.js
-   加载manifest.json，初始化加载js
+   加载manifest.json,初始化加载js
 3. 下载cordova-app-loader-complete.js
    位于lib,是cordova-app-loader、cordova-promise-fs、bluebird三者的合体,支持不同运行环境不同策略
 4. 编写manifest.json文件
