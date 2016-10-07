@@ -16,22 +16,22 @@ Crosswalk是个好东西，缺陷是打包后会很大(增20m左右)。
     │   ├── ...
     ├── scss
     │   ├── ionic.app.scss
-    │   └── img
+    │   └── ...
     ├── www
-    │   ├── account/
-    │   ├── app/
-    │   ├── chat/
-    │   ├── common/
+    │   ├── account/ (业务单元)
+    │   ├── app/ (APP入口)
+    │   ├── chat/ (业务单元)
+    │   ├── common/ (公用)
     │   ├── dash (业务单元)
     │   │    ├── business/ (子业务单元)
     │   │    ├── css/
     │   │    ├── js/
     │   │    ├── tpl/
-    │   ├── autoupdate.js
-    │   ├── bootstrap.js
-    │   ├── index.html
+    │   ├── autoupdate.js (自动更新_实现)
+    │   ├── bootstrap.js (自动更新_初始化)
+    │   ├── index.html (入口)
     │   ├── service-worker.js
-    │   └── manifest.json
+    │   └── manifest.json (自动更新_hash)
     ├── config.xml
     ├── ionic.project
     ├── package.json
@@ -91,3 +91,4 @@ Crosswalk是个好东西，缺陷是打包后会很大(增20m左右)。
 1. gulp-uglify可能导致程序不能运行
    原因分析:uglify会进行变量压缩，压缩后angularJS就不知道依赖注入哪个服务了。
    解决方案:把依赖作为一个字符串数组传递，而数组的最后一个元素是一个把所有依赖作为参数的函数。
+   注意事项:使用angular.min.js就不要再进行压缩了
