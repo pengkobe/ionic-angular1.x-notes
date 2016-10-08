@@ -50,7 +50,7 @@ Crosswalk是个好东西，缺陷是打包后会很大(增20m左右)。
 4. 使用[ocLazyLoad](https://github.com/ocombe/ocLazyLoad)动态加载文件，[文档](https://oclazyload.readme.io/docs)
 5. 统一管理包名[测试版、发布版]，在引用第三方服务的时候特别需要注意。
 6. 更好的开发和调试，使用[Batarang](https://chrome.google.com/webstore/detail/angularjs-batarang/ighdmehidhipcmcojjgiloacoafjmpfk?hl=en)
-7. 适当引进测试,Karma、[Protractor](http://www.oschina.net/p/protractor)
+7. 适当引进测试,Karma、[Protractor](http://www.oschina.net/p/protractor)  
 
 ### 入口
 1. 用户信息/权限/功能管理
@@ -62,6 +62,7 @@ Crosswalk是个好东西，缺陷是打包后会很大(增20m左右)。
 7. 全局注入器(ajax切面/请求头修改)
 
 ### 业务类
+* 分为线上环境与本地环境两套代码(web vs app)   
 * 分模块开发,懒加载
 * 对于服务类需要异步请求数据的，可以使用promise进行改造
 * 对于耦合较大的业务，如单个组件间需要践行业务分离(ion-slide-box),可以采用写指令的方式，

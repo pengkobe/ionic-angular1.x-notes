@@ -11,8 +11,8 @@
  - 值为：true - 将为这个directive创建一个新的scope。如果在同一个元素中有多个directive需要新的scope的话，它还是只会创建一个scope。新的作用域规则不适用于根模版（root of the template），因此根模版往往会获得一个新的scope。
  - 值为：{}(object hash) - 将创建一个新的、独立(isolate)的scope。”isolate” scope与一般的scope的区别在于它不是通过原型继承于父scope的。对创建可复用的组件很有帮助，可有效防止读取或修改父级scope。这个独立的scope会创建一个拥有一组来源于父scope的本地scope属性：
     + @或@attr - 建立一个local scope property到DOM属性的绑定（单向）。属性值总是String类型。如果没有通过@attr指定名称，本地名称为DOM属性名称。值是在父scope读取的（不是组件scope）
-    +  =或=expression， 在本地scope属性与parent scope属性之间设置双向的绑定。如果没有指定attr名称，那么本地名称将与属性名称一致。
-    +  &或&attr - 提供一个在父scope上下文中执行一个表达式的途径。如果没有指定attr的名称，那么local name将与属性名称一致。
+    + =或=expression， 在本地scope属性与parent scope属性之间设置双向的绑定。如果没有指定attr名称，那么本地名称将与属性名称一致。
+    + &或&attr - 提供一个在父scope上下文中执行一个表达式的途径。如果没有指定attr的名称，那么local name将与属性名称一致。
 *  controller，会在pre-linking步骤之前进行初始化，并允许其他directive通过指定名称的require进行共享（看下面的require属性）。这将允许directive之间相互沟通，增强相互之间的行为。controller默认注入了以下本地对象：
   - $scope - 与当前元素结合的scope
   - $element - 当前的元素

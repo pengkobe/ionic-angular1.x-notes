@@ -36,5 +36,7 @@
 ### 参考
 https://github.com/angular/angular.js/wiki/Best-Practices
 AngularJS最佳编码实践指南 : http://blog.jobbole.com/80634/
-AngulaeJS最佳实践 : http://www.cnblogs.com/jifeng/p/3474757.html
+AngulaeJS最佳实践 : http://www.cnblogs.com/jifeng/p/3474757.html  
+[AngularJS性能优化心得](https://github.com/atian25/blog/issues/5)  
+
 
