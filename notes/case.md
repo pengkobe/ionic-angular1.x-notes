@@ -10,3 +10,105 @@
    + 增加子文件夹module
    + 路由配置下放到moudle
 5. 迁移代码、移除多余代码(服务端+ionic前端)
+6. 配置路由，安装gulp插件，其中gulp-sass报错，但是降低版本后安装成功
+7. 添加ozlazyloader,hotupdater插件
+8. 报了一个错，发现是乱套用tianmi中的config出问题了！挖掘原因是$httpProvider重复配置，导致报错
+   ```
+    .config(['$httpProvider', '$resourceProvider', function ($httpProvider, $resourceProvider) {
+            var interceptor = function ($q, $rootScope, Passport, $location, Config) {
+            return {
+                'request': function (request) {
+                $httpProvider.defaults.useXDomain = true;
+                delete $httpProvider.defaults.headers.common['X-Requested-With'];
+                $resourceProvider.defaults.stripTrailingSlashes = false;
+                $httpProvider.defaults.headers.common['platform'] = 'android';  // 添加platform
+
+                delete request.headers.Authorization;
+                var _token = Passport.getToken();
+                var _request_url = request.url.substr(0, 22);
+                if (_token) {
+                    request.headers.Authorization = "Token " + _token;
+                }
+
+                request.params = request.params || {};
+                return request;
+                },
+                'requestError': function (requestError) {
+                return requestError;
+                },
+                'response': function (response) {
+                return response;
+                },
+                'responseError': function (rejection) {
+                switch (rejection.status) {
+                    case 401:
+                    // $location.path('login');
+                    $rootScope.$broadcast('response', '401');
+                    break;
+                    case 403:
+                    break;
+                    case 404:
+                    //清除Passport中的token
+                    // Passport.logout();
+
+                    break;
+                    case 500:
+                    // /!*$location.path('/500');*!/
+                    break;
+                }
+                return $q.reject(rejection);
+                }
+            };
+            };
+            //声明interceptor 的注入依赖顺序
+            interceptor.$inject = ['$q', '$rootScope', 'Passport', '$location', 'Config'];
+            $httpProvider.interceptors.push(interceptor);
+   }])
+   ```
+
+   9. 发现错误，造成$digest死循环
+   ```
+   // 构建消息UI模板
+    $scope.buildTplUrl = function (type) {
+
+      /** 业务类模板 */
+      var tplUrl;
+      switch (type) {
+        case 'industry':
+          tplUrl = 'industry';
+          break;
+        case 'medical':
+          tplUrl = 'medical';
+          break;
+        case 'aircondition':
+          tplUrl = 'aircondition';
+          buildAircondition();
+          break;
+        default:
+        // TODO：隐藏业务tab
+      }
+      return 'module/dash/business/' + tplUrl + '/' + tplUrl + '.html';
+    };
+
+    /**
+     * 构建Aircondition业务
+     */
+    function buildAircondition() {
+      $scope.expanders = [
+        {
+          title: 'Click me to expand',
+          text: 'Hi there folks, I am the content that was hidden but is now shown.'
+        },
+        {
+          title: 'Click this',
+          text: 'I am even better text than you have seen previously'
+        },
+        {
+          title: 'Test',
+          text: 'test'
+        }];
+    }
+   ```
+   10. ion-nav-buttons>ion-nav-title>ion-nav-bar>(上级不见了会报错)
+   11. 路由需要遵循命名规则：tab.名称，
+    
