@@ -11,4 +11,6 @@ notes for ionic build with angular1.x
 * [开发方案探究](notes/solution.md)  
 * [AngularJS最佳实践](notes/best-practice.md)  
 
+### 部分参考
+https://github.com/xufei/blog
 
