@@ -14,10 +14,10 @@
 7. 添加ozlazyloader,hotupdater插件
 8. 报了一个错，发现是乱套用tianmi中的config出问题了！挖掘原因是$httpProvider重复配置，导致报错
    ```
-    .config(['$httpProvider', '$resourceProvider', function ($httpProvider, $resourceProvider) {
-            var interceptor = function ($q, $rootScope, Passport, $location, Config) {
-            return {
-                'request': function (request) {
+.config(['$httpProvider', '$resourceProvider', function ($httpProvider, $resourceProvider) {
+      var interceptor = function ($q, $rootScope, Passport, $location, Config) {
+      return {
+          'request': function (request) {
                 $httpProvider.defaults.useXDomain = true;
                 delete $httpProvider.defaults.headers.common['X-Requested-With'];
                 $resourceProvider.defaults.stripTrailingSlashes = false;
@@ -59,10 +59,10 @@
                 return $q.reject(rejection);
                 }
             };
-            };
-            //声明interceptor 的注入依赖顺序
-            interceptor.$inject = ['$q', '$rootScope', 'Passport', '$location', 'Config'];
-            $httpProvider.interceptors.push(interceptor);
+      };
+      //声明interceptor 的注入依赖顺序
+      interceptor.$inject = ['$q', '$rootScope', 'Passport', '$location', 'Config'];
+      $httpProvider.interceptors.push(interceptor);
    }])
    ```
 
@@ -70,7 +70,6 @@
    ```
    // 构建消息UI模板
     $scope.buildTplUrl = function (type) {
-
       /** 业务类模板 */
       var tplUrl;
       switch (type) {
@@ -111,4 +110,5 @@
    ```
    10. ion-nav-buttons>ion-nav-title>ion-nav-bar>(上级不见了会报错)
    11. 路由需要遵循命名规则：tab.名称，
+   12. 重构聊天界面(指令化、服务化)，对界面做稍许优化
     

@@ -10,6 +10,7 @@ notes for ionic build with angular1.x
 * [开发痛点](notes/painspots.md)  
 * [开发方案探究](notes/solution.md)  
 * [AngularJS最佳实践](notes/best-practice.md)  
+* [案例实践](notes/case.md), [ionic-chat](https://github.com/pengkobe/ionic-chat)  
 
 ### 部分参考
 https://github.com/xufei/blog

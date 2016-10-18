@@ -18,19 +18,26 @@ Crosswalk是个好东西，缺陷是打包后会很大(增20m左右)。
     │   ├── ionic.app.scss
     │   └── ...
     ├── www
-    │   ├── account/ (业务单元)
-    │   ├── app/ (APP入口)
-    │   ├── chat/ (业务单元)
+    │   ├── assets/ (图片字体等资源)
+    │   ├── dist/ (按模块打包后代码)
+    │   ├── lib/ (第三方资源)
     │   ├── common/ (公用)
-    │   ├── dash (业务单元)
-    │   │    ├── business/ (子业务单元)
-    │   │    ├── css/
-    │   │    ├── js/
-    │   │    ├── tpl/
-    │   ├── autoupdate.js (自动更新_实现)
-    │   ├── bootstrap.js (自动更新_初始化)
-    │   ├── index.html (入口)
-    │   ├── service-worker.js
+    │   ├── module/ (模块)
+    │   │   ├── app/ (APP入口)
+    │   │   ├── dash (业务单元)
+    │   │   │    ├── business/ (子业务单元)
+    │   │   │    ├── directive/ (组件集合)
+    │   │   │    ├── css/
+    │   │   │    ├── js/
+    │   │   │    └── tpl/
+    │   │   ├── account/ (业务单元)
+    │   │   │    └── 参见dash...
+    │   │   ├── chat/ (业务单元)
+    │   │   │    └── 参见dash...
+    │   │   ├── autoupdate.js (自动更新_实现)
+    │   │   ├── bootstrap.js (自动更新_初始化)
+    │   │   ├── index.html (入口)
+    │   │   ├── service-worker.js (后台服务)
     │   └── manifest.json (自动更新_hash)
     ├── config.xml
     ├── ionic.project
