@@ -54,7 +54,8 @@
 
 6. 测试
 修改style下dash.css的版本号，虽然能够下载下来(downlaod)，但是没有进入到update方法，一步一步排查，
-最后排查到了*cordova-app-loader-complete.js*中498行，发现少了如下一个判断,直接报错中止了运行。[issue](https://github.com/markmarijnissen/cordova-app-loader/issues/74)
+最后排查到了*cordova-app-loader-complete.js*中498行，发现少了如下一个判断,直接报错中止了运行。
+[issue](https://github.com/markmarijnissen/cordova-app-loader/issues/74)。但是新版本貌似修复了这个问题。
 
 ```javascript
 if(onSingleDownloadProgress){

@@ -54,7 +54,8 @@ Crosswalk是个好东西，缺陷是打包后会很大(增20m左右)。
 2. 深层次使用gulp，进一步自动化解决人工维护痛点，此外，还可以任务分文件，路径可配置化(桌面程序)
    ![wepay实践](img/we_gulp.png)
 3. 使用sass模块化开发css
-4. 使用[ocLazyLoad](https://github.com/ocombe/ocLazyLoad)动态加载文件，[文档](https://oclazyload.readme.io/docs)
+4. 使用[ocLazyLoad](https://github.com/ocombe/ocLazyLoad)动态加载文件，[文档](https://oclazyload.readme.io/docs)  
+   其实还有另一种选择，那就是使用requirejs，待究。
 5. 统一管理包名[测试版、发布版]，在引用第三方服务的时候特别需要注意。
 6. 更好的开发和调试，使用[Batarang](https://chrome.google.com/webstore/detail/angularjs-batarang/ighdmehidhipcmcojjgiloacoafjmpfk?hl=en)
 7. 适当引进测试,Karma、[Protractor](http://www.oschina.net/p/protractor)  
