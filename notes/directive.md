@@ -12,7 +12,7 @@
  - 值为：true - 将为这个directive创建一个新的scope。如果在同一个元素中有多个directive需要新的scope的话，
    它还是只会创建一个scope。新的作用域规则不适用于根模版，根模版往往会创建一个新的scope。
  - 值为：{}(object hash) - 将创建一个新的、独立(isolate)的scope。”isolate”。可有效防止读取或修改父级scope，
-   这个独立的scope会创建一个拥有一组来源于父scope的本地scope属性，如果没有指定属性的名称，那么局部名称将与属性名称一致：
+   这个独立的scope会创建一个拥有一组来源于父scope的本地scope属性，***如果没有指定属性名称，局部名称与属性名称一致***：
     + @或@attr - 建立一个local scope property到DOM属性的绑定（单向）。属性值总是String类型。
     + =或=expression， 在本地scope属性与parent scope属性之间设置双向的绑定。
     + &或&attr - 提供一个在父scope上下文中执行一个表达式的途径。
@@ -34,8 +34,9 @@
  - M, 注释
 *  template - 如果replace 为true，则将模版内容替换当前的HTML元素;如果为false，则将当作子元素处理。
 *  templateUrl - 通过指定的url进行加载。因为模版加载是异步的，所以compilation、linking都会暂停，等待加载完毕后再执行。
+   ***我建议使用这种方式进行构建***
 *  replace - 为true时，那么模版将会替换当前元素，而不是作为子元素.(为true时，模版必须**有且只有**一个根节点)
-*  transclude - 编译元素的内容，使它能够被directive所用。需要(在模版中)配合ngTransclude使用(引用)。
+*  transclude - 编译元素的内容，使它能够被directive所用。需要(在模版中)配合ngTransclude使用(***如不存在但写了，会报错***)。
    transclusion的优点是linking function能够得到一个预先与当前scope绑定的transclusion function。
    一般地，建立一个widget，创建isolate scope，transclusion不是子级的，
    而是isolate scope的兄弟。这将使得widget拥有私有的状态，
@@ -46,6 +47,7 @@
 *  link -下面实例详解。这个属性仅在compile属性没有定义的情况下使用。
 
 ### compile与link
+compile与link只能存在一个。
 #### compile
 负责对模板DOM进行转换。存在多个指令实例时也只会执行一遍。
 #### link
@@ -59,16 +61,16 @@
 <input type="text" ng-model="user.location" auto-fill="fetchCities"
 autocomplete="off" placeholder="Location" />
 
-// 指令实现
+// JS:指令实现
 .directive('autoFill', function($timeout) {
     return {
         restrict: 'EA',
         scope: {
-            autoFill: '&',//函数
+            autoFill: '&',
             ngModel: '='
         },
         compile: function(tEle, tAttrs) {
-            //编译函数
+            //编译函数实现，用于对模板进行更改
             var tplEl = angular.element('<div class="typeahead">' +
                 '<input type="text" autocomplete="off" />' +
                 '<ul id="autolist" ng-show="reslist">' +
@@ -80,8 +82,8 @@ autocomplete="off" placeholder="Location" />
             input.attr('type', tAttrs.type);
             input.attr('ng-model', tAttrs.ngModel);
             tEle.replaceWith(tplEl);
+            // 实际上这里是link函数
             return function(scope, ele, attrs, ctrl) {
-                //链接函数
                 var minKeyCount = attrs.minKeyCount || 3,
                 timer,
                 input = ele.find('input');
