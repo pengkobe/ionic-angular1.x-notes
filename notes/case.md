@@ -114,5 +114,8 @@
    13. 发现指令配置scope时，键与值的名称不能相同，否则无法找到实例。
    14. 删掉call中多余的代码
    15. 重构cordova-app-loader，指令化，部署服务端进行测试
+   16. 使用config.js配置包括请求地址在内的一些全局常量。
+   17. 构建服务端model+route，基于mongoose
+   18. 构建client端service，数据与服务端对接
 
     
