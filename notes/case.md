@@ -13,7 +13,8 @@
 6. 配置路由，安装gulp插件，其中gulp-sass报错，但是降低版本后安装成功
 7. 添加ozlazyloader,hotupdater插件
 8. 报了一个错，发现是乱套用tianmi中的config出问题了！挖掘原因是$httpProvider重复配置，导致报错
-   ```
+
+   ```javascript 
 .config(['$httpProvider', '$resourceProvider', function ($httpProvider, $resourceProvider) {
       var interceptor = function ($q, $rootScope, Passport, $location, Config) {
       return {
@@ -67,7 +68,8 @@
    ```
 
    9. 发现错误，造成$digest死循环
-   ```
+
+   ```javascript
    // 构建消息UI模板
     $scope.buildTplUrl = function (type) {
       /** 业务类模板 */
@@ -117,5 +119,7 @@
    16. 使用config.js配置包括请求地址在内的一些全局常量。
    17. 构建服务端model+route，基于mongoose
    18. 构建client端service，数据与服务端对接
+   19. **整合oclazyload失败，由于是否为每一个module添加一个entry.js，这样子就可以动态加载了。(此外还需考虑与apploader结合使用)**
+   20. 打算写一个登陆页(_10_29)
 
     
