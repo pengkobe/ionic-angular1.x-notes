@@ -58,6 +58,11 @@ for(o in $($0).scope())
 实际上很少时候需要手动调用 ```$digest();``` $apply总是更好的选择。
 
 
+### 重要方法
+* $evalAsync,可以用来代替 $timeout (在Dom渲染之前执行，会有一点闪烁 ),表示晚一点执行
+  参考:http://blog.csdn.net/dm_vincent/article/details/51607018
+
+
 ###  参考
 1. http://www.w3ctech.com/topic/1611
   每次看这种别人翻译的文章就会想起阮老师，一般的翻译者和阮老师真不是一个档次的！

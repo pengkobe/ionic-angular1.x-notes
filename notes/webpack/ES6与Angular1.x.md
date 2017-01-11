@@ -92,4 +92,9 @@ directive是返回一个键值对配置的函数，显然，它也不是一个cl
 5. 使用ESLint
 
 
+## 插件
+* [isparta](https://github.com/douglasduteil/isparta) : Isparta is a code coverage tool for ES6 using babel.
+
+
+
 

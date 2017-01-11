@@ -28,7 +28,7 @@
       "filename": "./dash/css/dash.css"
     }
   },
-  // 这些文件会在 index.html 中加载
+  // 这些文件会在 index.html 中加载,首次会从本地加载
   "load": [
     "dash/js/dash.js",
     "dash/tpl/tab-dash.html"
@@ -113,7 +113,7 @@ Failed to load resource: net::ERR_FILE_NOT_FOUND
             },
             // Update the local files with a new version just downloaded
             update: function (reload) {
-                // alert('ok');
+                // reload:指示是否立即重新加载
                 return loader.update(reload);
             },
             // Check wether the HTML file is cached
@@ -133,6 +133,12 @@ Failed to load resource: net::ERR_FILE_NOT_FOUND
         };
     })
 ```
+
+### 结合 Angular1.x 使用
+特别需要注意的是，首次加载文件为异步加载，如果需要下载加载入口文件
+1. 去掉 body 上的 ng-app="starter" 属性
+2. 手动指定入口 App ```angular.bootstrap(doucumnet.body,["starter"]);```
+
 
 ### 问题
 1. 和懒加载一起使用会发生问题！
