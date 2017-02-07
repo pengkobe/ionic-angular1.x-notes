@@ -116,6 +116,42 @@ autocomplete="off" placeholder="Location" />
 });
 ```
 
+## ngModel
+常见于
+```javascript
+require: 'ngModel'
+``` 
+常用于表单中数据双向绑定。
+
+代码示例
+```javascript
+  // 指定UI的更新方式
+    ngModel.$render = function() {
+      element.html(ngModel.$viewValue || '');
+    };
+
+    // 监听change事件来开启绑定
+    element.on('blur keyup change', function() {
+      scope.$apply(read);
+    });
+    read(); // 初始化
+    // 将数据写入model
+    function read() {
+      var html = element.html();
+      // 当我们清空div时浏览器会留下一个<br>标签
+      // 如果制定了strip-br属性，那么<br>标签会被清空
+      if( attrs.stripBr && html == '<br>' ) {
+        html = '';
+      }
+      ngModel.$setViewValue(html);
+    }
+  }
+};
+```
+
+参考：http://sentsin.com/web/659.html
+
+
 ### 部分参考
 * [AngularJS权威教程](https://book.douban.com/subject/25945442/)
 * 翻译者有点烂,建议看原文:[[译] AngularJS内幕详解之 Directive](http://www.w3ctech.com/topic/1612)
