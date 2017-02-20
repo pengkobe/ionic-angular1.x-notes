@@ -10,7 +10,7 @@
    + 增加子文件夹module
    + 路由配置下放到moudle
 5. 迁移代码、移除多余代码(服务端+ionic前端)
-6. 配置路由，安装gulp插件，其中gulp-sass报错，但是降低版本后安装成功
+6. 配置路由，安装gulp插件，其中gulp-sass报错，但是降低版本后安装成功(一说需要翻墙)
 7. 添加ozlazyloader,hotupdater插件
 8. 报了一个错，发现是乱套用tianmi中的config出问题了！挖掘原因是$httpProvider重复配置，导致报错
 
